@@ -7,11 +7,11 @@ from slackeventsapi import SlackEventAdapter
 
 app = Flask(__name__)
 
-slack_event_adapter = SlackEventAdapter(
-    os.environ["SIGNING_SECRET"], "/slack/events", app
-)
+signing_secret = os.environ["SIGNING_SECRET"]
+slack_event_adapter = SlackEventAdapter(signing_secret.strip(), "/slack/events", app)
 
-client = slack.WebClient(token=os.environ["SLACK_API_TOKEN"])
+slack_token = os.environ["SLACK_API_TOKEN"]
+client = slack.WebClient(token=slack_token.strip())
 
 
 @slack_event_adapter.on("message")
