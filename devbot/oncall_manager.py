@@ -49,7 +49,6 @@ class OnCallManager:
         )
         values = reading.get("values", [])
 
-        next_row_with_empty_issue_description = 0
         if logging.DEBUG:
             if not values:
                 print("No data found.")
