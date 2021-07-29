@@ -20,7 +20,7 @@ BOT_ID = client.api_call("auth.test")["user_id"]
 @slack_event_adapter.on("message")
 def message(payload):
     event = payload.get("event", {})
-    channel_id = payload.get("channel")
+    channel_id = event.get("channel")
     user_id = event.get("user")
     text = event.get("text")
 
