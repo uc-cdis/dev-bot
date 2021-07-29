@@ -16,6 +16,7 @@ pyOpenSSL = "^20.0.1"
 ndg-httpsclient = "^0.5.1"
 pyasn1 = "^0.4.8"
 urllib3 = "^1.26.6"
+cryptography = "3.2"
 
 [tool.poetry.dev-dependencies]
 
