@@ -12,6 +12,7 @@ RUN mkdir -p /opt/ctds/devbot \
 COPY . /opt/ctds/devbot
 WORKDIR /opt/ctds/devbot
 
+ENV CRYPTOGRAPHY_ALLOW_OPENSSL_102=true
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 RUN apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev openssl-dev gcc g++ curl
 
