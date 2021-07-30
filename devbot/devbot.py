@@ -73,8 +73,8 @@ def message(payload):
     log.debug(f"text: {text}")
 
     if BOT_ID != user_id:
-        if "UP60ZEQJ0" in text:
-            log.info("user {} just sent a msg: {}".format(user, the_msg))
+        if "<@U029984C71C>" in text:
+            log.info(f"user {user_id} just sent a msg: {text}")
 
             raw_command = text.replace("\xa0", " ")
             raw_command = raw_command.replace("“", '"').replace("”", '"')
