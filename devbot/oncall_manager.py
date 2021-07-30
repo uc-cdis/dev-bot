@@ -80,6 +80,9 @@ class OnCallManager:
 
         return bot_response
 
+    def read_oncall_log(self):
+        return "not implemented yet."
+
 
 if __name__ == "__main__":
     result = OnCallManager().add_oncall_log_entry(
