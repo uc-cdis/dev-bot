@@ -77,9 +77,13 @@ def message(payload):
             log.info(f"user {user_id} just sent a msg: {text}")
 
             raw_command = text.replace("\xa0", " ")
+            log.debug(f"raw_command: {raw_command}")
             raw_command = raw_command.replace("“", '"').replace("”", '"')
+            log.debug(f"raw_command: {raw_command}")
             msg_parts_split = raw_command.split(" ")
+            log.debug(f"msg_parts_split: {msg_parts_split}")
             msg_parts = list(filter(None, msg_parts_split))
+            log.debug(f"msg_parts: {msg_parts}")
             # identify command
             if len(msg_parts) > 1:
                 command = msg_parts[1]
