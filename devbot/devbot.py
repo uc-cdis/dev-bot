@@ -59,6 +59,31 @@ def process_command(command, args):
         if entered_json_block_at_index:
             args[entered_json_block_at_index] += " " + args[i]
 
+    if entered_json_block_at_index:
+        args = args[: entered_json_block_at_index + 1]
+        log.debug("args: {}".format(args))
+
+    # execute command
+    if command in commands_map.keys():
+        log.info("args: " + str(args))
+        if len(args) >= 1 and args[0] == "help":
+            return f"""instructions for {command}: \n
+args:  {commands_map[command]['args']}
+example:  {commands_map[command]['example']}
+      """
+            return help_txt
+        else:
+            try:
+                return commands_map[command]["call"](*args)
+            except TypeError as te:
+                return str(te)
+            except Exception as e:
+                log.error(e)
+                traceback.print_exc()
+                return "something went wrong. Contact the QA team"
+    else:
+        return "command not recognized. :thisisfine:"
+
 
 @slack_event_adapter.on("message")
 def message(payload):
