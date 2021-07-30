@@ -1,5 +1,6 @@
 import slack
 import os
+import logging
 from pathlib import Path
 from flask import Flask
 from slackeventsapi import SlackEventAdapter
@@ -16,6 +17,9 @@ client = slack.WebClient(
     token=slack_token.strip(), base_url="https://cdis.slack.com/api/"
 )
 BOT_ID = client.api_call("auth.test")["user_id"]
+
+logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
+log = logging.getLogger(__name__)
 
 
 def list_all_commands():
